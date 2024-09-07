@@ -18,7 +18,7 @@ class CharactersRepositoryImpl(
 ) : CharactersRepository {
     override suspend fun getCharacters(): Result<List<Character>> {
         return try {
-            val remoteData = remoteDataSource.getTeams()
+            val remoteData = remoteDataSource.getCharacters()
             if (remoteData.isNotEmpty()) {
                 localDataSource.deleteAllCharacters()
                 localDataSource.insertCharacters(remoteData.map { it.toDatabase() })

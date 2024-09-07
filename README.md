@@ -41,6 +41,17 @@ Luego es necesario abrir la aplicación de Android Studio, importar el proyecto 
 Posterior a ello solo hace falta seleccionar el emulador configurado previamente y presionar el botón run app o bien la combinación de
 teclas Shift+F10 para ejecutar la app en el emulador.
 
+Cabe mencionar que si, clonas el proyecto no se ejecutara de manera satisfactoria.
+
+Es necesario agregar en el archivo local.properties la url de la api y el nombre de la base de datos.
+
+Debera de tener este aspecto.
+
+![local.properties](img/localProperties.png)
+
+```base_url="<url>"```
+```db_name="<nombre_db>"```
+
 Listo! ya corrió la app.
 
 

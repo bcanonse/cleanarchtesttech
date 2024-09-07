@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,14 +35,31 @@ fun CharactersScreen(
     val state = viewModel.state
 
     if (state.isLoading) {
-        Box(modifier = Modifier.fillMaxSize())
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center)
         {
-            CircularProgressIndicator()
+            CircularProgressIndicator(
+                modifier = Modifier.size(64.dp), color = Color.Blue
+            )
+        }
+    }
+
+    state.error?.let {
+        Box(
+            modifier =
+            Modifier
+                .fillMaxSize(), contentAlignment = Alignment.Center
+        )
+        {
+            Text(text = it, textAlign = TextAlign.Center, fontSize = 18.sp)
         }
     }
 
     if (state.characters.isNotEmpty()) {
-        LazyColumn {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 0.dp, vertical = 10.dp)
+        ) {
             items(state.characters) {
                 Item(character = it)
             }
@@ -57,13 +76,13 @@ fun Item(
         modifier = Modifier
             .padding(24.dp)
             .clip(RoundedCornerShape(24))
-            .border(2.dp, Color.Green, shape = RoundedCornerShape(0, 24, 0, 24))
+            .border(2.dp, Color.Gray, shape = RoundedCornerShape(0, 24, 0, 24))
             .fillMaxWidth()
             .height(250.dp), contentAlignment = Alignment.BottomCenter
     ) {
         AsyncImage(
             model = character.image,
-            contentDescription = "character image",
+            contentDescription = "character image ${character.name}",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )

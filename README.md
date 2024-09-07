@@ -29,6 +29,21 @@ Las librerías o clases utilizadas para la creación del proyecto fueron:
 - ViewModel y Coroutines
 - Hilt Android (Inyección de dependencias)
 
+# Compilación o ejecución.
+Para este proyecto se utilizo OS de Windows y Android Studio Koala | 2024.1.1
+
+Para compilar el proyecto y ejecutarlo, primero se debe de crear un emulador de Android, esto puede realizarse desde Android Studio.
+
+[Configurar emulador Android](https://developer.android.com/studio/run/managing-avds?hl=es-419)
+
+Luego es necesario abrir la aplicación de Android Studio, importar el proyecto y el IDE automáticamente descargara las dependencias.
+
+Posterior a ello solo hace falta seleccionar el emulador configurado previamente y presionar el botón run app o bien la combinación de
+teclas Shift+F10 para ejecutar la app en el emulador.
+
+Listo! ya corrió la app.
+
+
 ## Funcionamiento de app usando la Api de Rick and Morty.
 
 ![Feature](img/feature.gif)
